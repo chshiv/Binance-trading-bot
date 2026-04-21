@@ -9,8 +9,14 @@ class BinanceClient:
         self.api_key = os.getenv("API_KEY")
         self.api_secret = os.getenv("API_SECRET")
 
-        if not self.api_key or not self.api_secret:
-            raise Exception("Missing API credentials in .env file")
+        missing = []
+        if not self.api_key:
+            missing.append("API_KEY")
+        if not self.api_secret:
+            missing.append("API_SECRET")
+
+        if missing:
+            raise ValueError(f"Missing environment variables: {', '.join(missing)}")
 
         self.client = Client(self.api_key, self.api_secret, testnet=True)
 
@@ -26,9 +32,9 @@ class BinanceClient:
             )
 
             if not response:
-                raise Exception("Empty response from Binance API")
+                raise RuntimeError("Empty response from Binance API")
 
             return response
 
         except Exception as e:
-            raise Exception(f"[BINANCE API ERROR] {str(e)}")
+            raise RuntimeError(f"[BINANCE API ERROR] {str(e)}")
