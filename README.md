@@ -180,3 +180,9 @@ pip install -r requirements.txt
 ## 🔒 Security Note
 
 This project is intended for **testnet use only**. Do not use real API credentials or connect to Binance's live trading environment with this bot without additional safeguards.
+
+## 🗂️ Log File
+ 
+The log file below contains real output from the testnet, including at least one **MARKET order** and one **LIMIT order**:
+ 
+📄 [View trading_bot.log on Google Drive](https://drive.google.com/file/d/1qbKgop__xUdOHVAwT2mKs-0Kv4S9hDh1/view?usp=sharing)
